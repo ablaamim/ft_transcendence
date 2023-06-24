@@ -30,12 +30,12 @@ Finally, the server structure must be containerized using [docker](https://www.d
 
 ---
 
-#### Badge
+#### Badge :
 <img src="./ft_transcendencee.png" width="150" height="150"/>
 
 ---
 
-#### Skills
+#### Skills :
 - Rigor
 - Group & interpersonal
 - Web
