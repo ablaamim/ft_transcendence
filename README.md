@@ -1,7 +1,14 @@
-# ft_transcendence
+### :fire: ft_transcendence :fire:
+
+---
+
 This project is about creating a website for the mighty [Pong](https://en.wikipedia.org/wiki/Pong) contest!
 
-### What is ft_transcendence?
+---
+
+### What is ft_transcendence :question:
+
+---
 
 ft_transcendence is an individual project at 1337 which requires that we build an online platform to play [Pong.](https://en.wikipedia.org/wiki/Pong)
 
@@ -18,13 +25,19 @@ The platform should have a ranking system, chat channels, direct messaging and a
 The main purpose is to play an implementation of [Pong](https://en.wikipedia.org/wiki/Pong), as if it was [1972.](https://www.youtube.com/watch?v=fiShX2pTz9A) all over again There should be a few customization options such as custom maps or power-ups but the user should still be able to play the original version.
 A spectator system must be implemented, spectators are able to watch the match without interfering with it.
 
-Finally, the server structure must be containerized using [docker](https://www.docker.com/) and available with a single call of: **docker-compose up --build**.
+Finally, the server structure must be containerized using [docker](https://www.docker.com/) and available with a single call of :
+> docker-compose up --build
 
+---
 
-### Badge
+#### Badge
 <img src="./ft_transcendencee.png" width="150" height="150"/>
+
+---
 
 #### Skills
 - Rigor
 - Group & interpersonal
 - Web
+
+---
