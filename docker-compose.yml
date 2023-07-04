@@ -23,11 +23,11 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     container_name: postgres
 
-  #backend:
-  #  build:
-  #    context: ./backend
-  #    dockerfile: Dockerfile
-  #  ports:
-  #    - "3000:3000"
-  #  depends_on:
-  #    - postgres
+  backend:
+   build:
+     context: ./backend
+     dockerfile: Dockerfile
+   ports:
+     - "3000:3000"
+   depends_on:
+     - postgres
