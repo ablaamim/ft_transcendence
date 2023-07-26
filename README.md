@@ -100,3 +100,10 @@ High performance and efficiency: Nginx is known for its high performance, low me
 
 Overall, Nginx acts as a robust and versatile web server and reverse proxy that can enhance the performance, scalability, and security of your web application. It provides features like serving static files, reverse proxying, load balancing, caching, and SSL termination, which can be valuable in building a reliable and efficient web infrastructure.
 
+---
+
+### RESSOURCES :
+
+[Frontend Masters](https://frontendmasters.com/learn/)
+
+---

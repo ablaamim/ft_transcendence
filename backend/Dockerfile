@@ -1,13 +1,12 @@
-FROM node:16.15.0-alpine
+FROM node:16.15.0-alpine AS build
 
 WORKDIR /app
 
-USER root
 
 COPY . .
 
 RUN npm install && npm run build
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["npm", "run", "start"]
