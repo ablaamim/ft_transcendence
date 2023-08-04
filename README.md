@@ -89,7 +89,11 @@ Launch command: Set up a Docker Compose file that allows you to launch your enti
 
 #### Docker-compose :
 
-##### First microservice : PostreSQL :
+---
+
+#### First microservice -> PostgreSQL :
+
+---
 
 
 ```
@@ -146,7 +150,9 @@ In summary, this docker-compose.yml file sets up a PostgreSQL service using the 
 
 ---
 
-### TEST :
+#### TEST :
+
+---
 
 to test only the PostgreSQL container separately, you can follow these steps:
 
@@ -193,6 +199,10 @@ docker-compose stop postgres
 
 ---
 
+#### Second Microsevice -> pgadmin :
+
+---
+
 Using pgAdmin is a great way to manage our PostgreSQL database visually. To use pgAdmin along with your Dockerized PostgreSQL container, let's follow these steps:
 
 Add pgAdmin to the Docker Compose File:
@@ -230,7 +240,9 @@ services:
 
 ---
 
-Configuration for pgAdmin:
+#### Configuration for pgAdmin :
+
+---
 
 In the pgadmin section of the docker-compose.yml, we're using the official pgAdmin Docker image (dpage/pgadmin4). The container will be named "pgadmin," and we're mapping port 8080 on the host to port 80 in the container, so pgAdmin can be accessed at http://localhost:8080 on our local machine.
 
@@ -243,7 +255,11 @@ To start the pgAdmin container along with the PostgreSQL container, run the foll
  docker-compose up -d pgadmin
 ```
 
-Access pgAdmin:
+---
+
+#### Access pgAdmin:
+
+---
 
 After the container is up and running, you can access pgAdmin by opening your web browser and navigating to http://localhost:8080.
 

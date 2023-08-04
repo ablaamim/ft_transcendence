@@ -1,29 +1,54 @@
 version: "3.8"
 
 services:
-  postgres :
+  postgres:
     image: postgres:13
-    restart: always
     container_name: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
     ports:
-      - 5432:5432
+      - "5432:5432"
+    env_file:
+      - ./backend/.env
     volumes:
       - data:/var/lib/postgresql/data
-  
-  pgadmin :
-    image: dpage/pgadmin4
-    restart: always
-    container_name: pgadmin
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.com
-      PGADMIN_DEFAULT_PASSWORD: pgadmin
-    ports: 
-      - 8080:80
+    networks:
+      - transcendance_network
+    #restart : always
 
+  pgadmin:
+    image: fenglc/pgadmin4
+    container_name: pgadmin
+    ports:
+      - "5050:5050"
+    env_file:
+      - ./backend/.env
+ 
+    volumes:
+    - data:/var/lib/pgadmin
+    - ./pgadmin/config:/pgadmin4
+    restart : always
+    networks:
+      - transcendance_network
+
+  backend:
+    container_name: backend_nest
+    restart: unless-stopped
+    build:
+      context: ./backend
+      target: development
+      dockerfile: Dockerfile
+    ports:
+      - 3333:3333
+    networks:
+      - transcendance_network
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - postgres
+
+
+networks:
+  transcendance_network:
+    driver: bridge
 
 volumes:
   data:

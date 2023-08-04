@@ -1,5 +1,6 @@
 #all : docker-compose --build
 
+# docker-compose up -d : run in background (detached mode)
 up :
 	docker-compose up -d
 
@@ -14,6 +15,10 @@ ps :
 
 fclean :
 	docker-compose down -v
+
+restart :
+	docker-compose down -v
+	docker-compose up -d
 
 # -v : remove volumes (data)
 
