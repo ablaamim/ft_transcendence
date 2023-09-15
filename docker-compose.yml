@@ -1,54 +1,52 @@
-version: "3.8"
+version: '3.8'
 
 services:
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    env_file:
+      - ./backend/.env  # Load environment variables from .env file
+    ports:
+      - "5050:80"
+    networks:
+      - mynetwork
+
   postgres:
-    image: postgres:13
+    image: postgres:latest
     container_name: postgres
+    env_file:
+      - ./backend/.env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    env_file:
-      - ./backend/.env
-    volumes:
-      - data:/var/lib/postgresql/data
     networks:
-      - transcendance_network
-    #restart : always
+      - mynetwork
 
-  pgadmin:
-    image: fenglc/pgadmin4
-    container_name: pgadmin
-    ports:
-      - "5050:5050"
-    env_file:
-      - ./backend/.env
- 
-    volumes:
-    - data:/var/lib/pgadmin
-    - ./pgadmin/config:/pgadmin4
-    restart : always
-    networks:
-      - transcendance_network
+  # backend:
+  #   build:
+  #     context: ./backend  # Replace with the path to your backend directory
+  #   container_name: backend
+  #   ports:
+  #     - "3000:3000"
+  #   depends_on:
+  #     - postgres
+  #   networks:
+  #     - mynetwork
 
-  backend:
-    container_name: backend_nest
-    restart: unless-stopped
+  frontend:
     build:
-      context: ./backend
-      target: development
-      dockerfile: Dockerfile
+      context: ./frontend  # Replace with the path to your frontend directory
+    container_name: frontend
     ports:
-      - 3333:3333
+      - "9090:9090"
+    #depends_on:
+    #  - backend  # You can add other dependencies as needed
     networks:
-      - transcendance_network
-    volumes:
-      - ./backend:/app
-    depends_on:
-      - postgres
-
+      - mynetwork
 
 networks:
-  transcendance_network:
-    driver: bridge
+  mynetwork:
 
 volumes:
-  data:
+  pg_data :

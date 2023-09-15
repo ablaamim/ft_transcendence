@@ -1,23 +1,20 @@
-# Use the official Node.js image as a base
+# Use an official Node.js runtime as the base image
 FROM node:14
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the container
-COPY package*.json ./
+COPY ../package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy all files from the host to the container
+# Copy the rest of the application code to the container
 COPY . .
 
-# Build the NestJS application
-RUN npm run build
+# Expose the port your Nest.js application is running on
+EXPOSE 3000
 
-# Expose the port the NestJS application is running on
-EXPOSE 3333
-
-# Start the NestJS application
-CMD [ "npm", "run", "start:prod" ]
+# Start the application
+CMD ["npm", "run", "start:dev"]
