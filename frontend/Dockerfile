@@ -1,6 +1,8 @@
 # we will use the latest version of node available from the Docker Hub.
 FROM node:14
 
+################################# BUILD TIME #########################################
+
 # Create app directory, where your app will live its lifetime.
 WORKDIR /usr/src/app
 
@@ -18,5 +20,8 @@ COPY . .
 # The app binds to port 3000, so exposing port 3000 to be used by the docker network
 EXPOSE 9090
 
+################################# RUNTIME ##############################################3
+
 # Runtime command to be executed when the container is launched
+# Test the backend
 CMD ["node", "app.js"]

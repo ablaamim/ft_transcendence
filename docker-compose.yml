@@ -1,5 +1,6 @@
 version: '3.8'
 
+# PostgresAdmin MicroService
 services:
   pgadmin:
     image: dpage/pgadmin4
@@ -9,8 +10,9 @@ services:
     ports:
       - "5050:80"
     networks:
-      - mynetwork
+      - ft_transcendence_network
 
+# Posgtres Microservice
   postgres:
     image: postgres:latest
     container_name: postgres
@@ -21,32 +23,36 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - mynetwork
-
+      - ft_transcendence_network
+  
+# Backend microService Depends on Postgres 
   backend:
     build:
-      context: ./backend  # Replace with the path to your backend directory
+      context: ./backend
     container_name: backend
     ports:
       - "3000:3000"
     depends_on:
       - postgres
     networks:
-      - mynetwork
+      - ft_transcendence_network
 
+# FrontEnd microService Depends on Backend
   frontend:
     build:
-      context: ./frontend  # Replace with the path to your frontend directory
+      context: ./frontend
     container_name: frontend
     ports:
       - "9090:9090"
-    #depends_on:
-    #  - backend  # You can add other dependencies as needed
+    depends_on:
+      - backend  
     networks:
-      - mynetwork
+      - ft_transcendence_network
 
+# Orchestrated Network
 networks:
-  mynetwork:
+  ft_transcendence_network:
 
+# Storage
 volumes:
   pg_data :

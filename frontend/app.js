@@ -7,5 +7,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(9090, () => {
-  console.log("React app example is running on port 9090...");
+  console.log("Simple React app is running on port 9090...");
 });

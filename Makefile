@@ -1,36 +1,36 @@
 NAME	= ft_transcendence
 
-.PHONY	: all
 all	: $(NAME)
 
 $(NAME)	:
-	@printf "Launching microservices ${NAME} ...\n"
-	@docker-compose up
+	@printf "\nLaunching ft_transcendence Microservices ${NAME} ...\n\n"
+	@docker-compose up -d
 
-.PHONY : down
+up	:
+	@printf "Launching ft_transcendence Microservices ${NAME} ...\n\n"
+	@docker-compose up -d
+
 down   :
-	@printf "Stopping configuration ${NAME}...\n"
+	@printf "\nStopping configuration ${NAME}...\n\n"
 	@docker-compose -f ./docker-compose.yml --env-file backend/.env down
 
-.PHONY : clean
 clean	:
-	@printf "Cleaning configuration ${NAME}...\n"
+	@printf "\nCleaning configuration ${NAME}...\n"
 	docker-compose -f ./docker-compose.yml down -v --rmi all --remove-orphans
 
-.PHONY	: fclean
 fclean	: clean
-	@printf "Total clean of all configurations docker\n"
+	@printf "\nTotal clean of all configurations docker...\n\n"
 	docker system prune --volumes --all --force
 	docker network prune --force
 	docker volume prune --force
 
-.PHONY	: re
 re	: fclean all
 
 .PHONY	: ps
 ps	:
 	docker-compose -f ./docker-compose.yml ps
 
-.PHONY : ls
 ls :
 	docker-compose ls
+
+.PHONY : all down clean fclean re ls 
