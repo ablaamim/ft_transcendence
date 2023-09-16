@@ -1,5 +1,5 @@
 {
-  "name": "debugging-pwa",
+  "name": "nestjs",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -38,7 +38,7 @@
     "type": "git",
     "url": "git+https://github.com/ablaamim/ft_transcendence.git"
   },
-  "author": "",
+  "author": "ablaamim",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ablaamim/ft_transcendence/issues"

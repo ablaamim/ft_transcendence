@@ -2,13 +2,21 @@
 FROM node:14
 
 # Set the working directory in the container
-WORKDIR /app
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the container
-COPY ../package*.json ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+#RUN apt-get update 
+#RUN apt-get upgrade
+#RUN apt-get install vim 
+#RUN apt-get install zsh 
+#RUN npm i -g @nestjs/cli 
+#RUN curl -L http://install.ohmyz.sh | sh 
+#RUN curl https://raw.githubusercontent.com/reversTeam/Sublivim/master/installer.sh | bash
+
 
 # Copy the rest of the application code to the container
 COPY . .
@@ -17,4 +25,7 @@ COPY . .
 EXPOSE 3000
 
 # Start the application
-CMD ["npm", "run", "start:dev"]
+#CMD ["/bin/bash", "node_dependencies.sh"]
+
+# Test backend :
+CMD ["node", "app.js"]

@@ -23,16 +23,16 @@ services:
     networks:
       - mynetwork
 
-  # backend:
-  #   build:
-  #     context: ./backend  # Replace with the path to your backend directory
-  #   container_name: backend
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - postgres
-  #   networks:
-  #     - mynetwork
+  backend:
+    build:
+      context: ./backend  # Replace with the path to your backend directory
+    container_name: backend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
 
   frontend:
     build:
