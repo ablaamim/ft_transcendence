@@ -1,5 +1,5 @@
 {
-  "name": "nestjs",
+  "name": "ablaamim",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -34,10 +34,7 @@
   "description": "---",
   "main": "index.js",
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ablaamim/ft_transcendence.git"
-  },
+  "repository": "git+https://github.com/ablaamim/ft_transcendence.git",
   "author": "ablaamim",
   "license": "ISC",
   "bugs": {

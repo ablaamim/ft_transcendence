@@ -17,4 +17,8 @@ echo "Installing nest dependencies"
 
 npm i -g @nestjs/cli
 
+echo "Update npm ..."
+
+npm install -g npm@10.1.0 
+
 echo "Dependencies installed SUCCESSFULLY."
