@@ -27,10 +27,10 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install vim -y
 RUN apt-get install zsh -y
-RUN install curl -y
+#RUN install curl -y
 RUN npm i -g @nestjs/cli 
-RUN curl -L http://install.ohmyz.sh | sh 
-RUN curl https://raw.githubusercontent.com/reversTeam/Sublivim/master/installer.sh | bash
+#RUN curl -L http://install.ohmyz.sh | sh 
+#RUN curl https://raw.githubusercontent.com/reversTeam/Sublivim/master/installer.sh | bash
 RUN npm install -g npm@10.1.0 
 
 ################################# Personal ###############################################
@@ -55,6 +55,11 @@ EXPOSE 3000
 
 # Test backend :
 
-CMD ["yarn", "run", "start:dev"]
+#WORKDIR /usr/src/app/nestjs_api
+
+#CMD ["yarn", "run", "start:dev"]
+
+CMD ["node", "app.js"]
+
 
 ############################################################################################
