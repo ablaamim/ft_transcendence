@@ -8,17 +8,23 @@ WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
-
-# Install dependencies
-RUN yarn install --frozen-lockfile
+COPY yarn.lock ./
 
 # prisma engine requires openssl in order to work properly (ex: npx prisma generate)
-#RUN apt-get update && apt-get -y install openssl && apt-get install -y procps
+RUN apt-get update && apt-get -y install openssl && apt-get install -y procps
 
-# Production
-#FROM base AS prod
+# Install dependencies for nestjs
+RUN yarn install --frozen-lockfile
 
-RUN yarn install --frozen-lockfile --production
+RUN yarn add -D npm -y
+
+RUN yarn add -D prisma -y
+
+COPY ./prisma ./prisma
+
+RUN yarn add -D npx -y
+
+#RUN yarn prisma generate
 
 # Better run the container with : docker exec -it backend bash 
 # Then execute the node_dependencies.sh with bash, in order to setups the machine to test code 
@@ -28,7 +34,9 @@ RUN apt-get upgrade -y
 RUN apt-get install vim -y
 RUN apt-get install zsh -y
 #RUN install curl -y
+
 RUN npm i -g @nestjs/cli 
+
 #RUN curl -L http://install.ohmyz.sh | sh 
 #RUN curl https://raw.githubusercontent.com/reversTeam/Sublivim/master/installer.sh | bash
 RUN npm install -g npm@10.1.0 
@@ -39,12 +47,19 @@ RUN apt-get install git -y
 RUN git config --global user.name "ablaamim"
 RUN git config --global user.email aku-no-hana@outlook.fr
 
+RUN yarn add -D npx
 
+RUN yarn add prisma
+
+RUN yarn add @prisma/client
+
+#RUN npx prisma studio --port 5555 
 # Copy the rest of the application code to the container
 COPY . .
 
 # Expose the port your Nest.js application is running on
 EXPOSE 3000
+EXPOSE 5555
 
 ############################################################################################
 
@@ -57,9 +72,14 @@ EXPOSE 3000
 
 #WORKDIR /usr/src/app/nestjs_api
 
-#CMD ["yarn", "run", "start:dev"]
+#RUN yarn run build
 
-CMD ["node", "app.js"]
+#RUN yarn install
 
+RUN yarn run build 
+
+CMD ["yarn", "start:dev"]
+#CMD ["node", "/dist/main.js"]
+#CMD ["node", "app.js"]
 
 ############################################################################################

@@ -71,7 +71,7 @@ Launch command: Set up a Docker Compose file that allows you to launch your enti
 
 ---
 
-### Basic Infrastructure :construction: :construction:
+### Infrastructure :construction: :construction:
 
 ---
 
@@ -91,7 +91,7 @@ Launch command: Set up a Docker Compose file that allows you to launch your enti
 
 ---
 
-#### First microservice -> PostgreSQL :
+#### First microservice -> Dockerize nestjs :
 
 ---
 

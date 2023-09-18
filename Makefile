@@ -4,7 +4,7 @@ all	: $(NAME)
 
 $(NAME)	:
 	@echo "\033[32m[Launching...] \033[0m\033[1;32mft_transcendence Microservices\033[0m"
-	@docker-compose up -d
+	@docker-compose up --build 
 
 up	:
 	@echo "\033[32m[Launching...] \033[0m\033[1;32mft_transcendence Microservices\033[0m"
@@ -23,6 +23,7 @@ fclean	: clean
 	docker system prune --volumes --all --force
 	docker network prune --force
 	docker volume prune --force
+	rm -rf ./backend/node_modules
 
 re	: fclean all
 
